@@ -11,7 +11,21 @@
 |
 */
 
+Route::get('/', 'Home@main');
+Route::get('/add/', 'Home@add');
+Route::get('/search/', 'Home@search');
+Route::post('/insert/', 'Home@insert');
+
+
+
+/*
 Route::get('/', function()
 {
-	return View::make('hello');
+    return View::make('hello');
 });
+*/
+/*
+Route::get('/modef', function(){
+    return View::make('main');
+});
+*/

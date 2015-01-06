@@ -5,6 +5,9 @@
  * Time: 4:50 AM
  */
 
-class Sentences {
+class Sentences extends Eloquent{
 
+    public final static function getWords($sentence){
+        return explode(" ", $sentence);
+    }
 }

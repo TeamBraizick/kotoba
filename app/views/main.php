@@ -1,11 +1,14 @@
 <html>
 
 <header>
-    <title>Test Page</title>
+    <title>Main Page</title>
 </header>
 
 <body>
-    <p>Testing main</p>
+<ul>
+    <li><a href="add">Add</a></li>
+    <li><a href="search">Search</a></li>
+</ul>
 </body>
 
 </html>

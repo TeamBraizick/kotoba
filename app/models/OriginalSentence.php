@@ -5,6 +5,6 @@
  * Time: 3:58 AM
  */
 
-class OriginalSentence {
-
+class OriginalSentence extends Sentences{
+    protected $table = 'original_sentence';
 }

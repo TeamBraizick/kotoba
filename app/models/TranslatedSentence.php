@@ -5,6 +5,6 @@
  * Time: 4:53 AM
  */
 
-class TranslatedSentence {
-
+class TranslatedSentence extends Sentences{
+    protected $table = 'translated_sentence';
 }
