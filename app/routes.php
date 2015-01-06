@@ -15,6 +15,7 @@ Route::get('/', 'Home@main');
 Route::get('/add/', 'Home@add');
 Route::get('/search/', 'Home@search');
 Route::post('/insert/', 'Home@insert');
+Route::post('/find/', 'Home@find');
 
 
 

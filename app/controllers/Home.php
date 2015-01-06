@@ -41,7 +41,7 @@ class Home extends BaseController {
 	public function insert()
 	{
 		if(empty($_POST)){
-			return View::make('nothing_to_insert');
+			return View::make('empty_post');
 			//header('location: ' . 'nothing');
 		} else {
 			//Create an entry for the original sentence
@@ -71,14 +71,43 @@ class Home extends BaseController {
 			return View::make('insertion_complete');
 			//header('location: ' . 'insertion_complete');
 		}
-}
-
+	}
 
 	/**
 	 * @return mixed
      */
 	public function search(){
 		return View::make('search');
+	}
+
+	public function find(){
+		if(empty($_POST)){
+			return View::make('empty_post');
+		} else {
+			$orignal = OriginalSentence::all();
+
+			$result = [];
+			foreach($orignal as $sentence){
+				if($sentence->language != $_POST['lang']){
+					continue;
+				}
+				foreach(unserialize($sentence->words) as $word){
+					if(strcasecmp($word,$_POST['word']) == 0){
+						//echo($sentence->sentence);
+						array_push($result ,$sentence);
+						//echo "||||||||||||||||||||||";
+						//print_r($result);
+						continue;
+					}
+				}
+			}
+
+			//Needs to be moved to a view
+			return View::make('found',['results' => $result]);
+			foreach($result as $indv){
+				echo($indv->sentence . '  @  ' . $indv->id . '<br/>');
+			}
+		}
 	}
 
 }
