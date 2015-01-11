@@ -18,7 +18,12 @@ Route::post('/insert/', 'Home@insert');
 Route::post('/find/', 'Home@find');
 Route::post('/search/results', 'Search@results');
 
-
+//Data Dump
+/*
+Route::post('/dump/data/'. function() {
+	return View::make('data', ['data', $_POST]);
+});
+*/
 
 /*
 Route::get('/add/', function()
@@ -26,6 +31,7 @@ Route::get('/add/', function()
     return View::make('addB');
 });
 */
+
 /*
 Route::get('/modef', function(){
     return View::make('main');

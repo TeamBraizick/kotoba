@@ -60,7 +60,7 @@ class Home extends BaseController {
 			$translated->lang = $_POST['source_lang'];
 			$translated->sentence = $_POST['translation'];
 			$translated->words = serialize([]);
-			$translated->original = serialize($original_id);
+			$translated->original = serialize([$original_id]);
 			$trWords = Sentences::getWords($_POST['translation']);
 			//Write entry to DB
 			$translated->save();
@@ -74,19 +74,22 @@ class Home extends BaseController {
 					$newWord = new Words();
 					$newWord->word = $spec;
 					$newWord->lang=$_POST['target_lang'];
-					$newWord->originals = serialize([]);
-					$newWord->translated = serialize([]);
+					$newWord->originals = serialize(array());
+					$newWord->translated = serialize(array());
 					$newWord->save();
 					$wordID = $newWord->id;
 				}
 				$word = Words::find($wordID);
+//				return View::make('data_dump', ['data' => $word]);
 				$originalsArr = unserialize($word->originals);
-				array_push($originalArr, $original_id);
+				$originalsArr[] = $original_id;
+//				return View::make('data_dump', ['data' => $originalArr]);
 				$word->originals = serialize($originalsArr);
 				$word->save();
+//				return View::make('data_dump', ['data' => ['id' => $original_id, 'wordOrg' => $word->originals, 'orgs' => $originalsArr, $word]]);
 				
 				$wordArr = unserialize($original->words);
-				array_push($wordArr, $wordID);
+				$wordArr[] = $wordID;
 				$original->words = serialize($wordArr);
 				$original->save();
 			}
@@ -105,18 +108,18 @@ class Home extends BaseController {
 				}
 				$word = Words::find($wordID);
 				$translatedArr = unserialize($word->translated);
-				array_push($originalArr, $translated_id);
+				$translatedArr[] = $translated_id;
 				$word->translated = serialize($translatedArr);
 				$word->save();
 	
 				$wordArr = unserialize($translated->words);
-				array_push($wordArr, $wordID);
+				$wordArr[] = $wordID;
 				$translated->words = serialize($wordArr);
 				$translated->save();
 			}
 		
 			//Update the original entry to include the id of the translation
-			$original->translated = serialize($translated_id);
+			$original->translated = serialize([$translated_id]);
 			$original->save();
 
 			return View::make('insertion_complete');
@@ -145,7 +148,7 @@ class Home extends BaseController {
 				foreach(unserialize($sentence->words) as $word){
 					if(strcasecmp($word,$_POST['word']) == 0){
 						//echo($sentence->sentence);
-						array_push($result ,$sentence);
+						$result[] = $sentence;
 						//echo "||||||||||||||||||||||";
 						//print_r($result);
 						continue;

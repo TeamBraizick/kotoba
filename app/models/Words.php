@@ -6,7 +6,7 @@
  */
 
 class Words extends Sentences{
-    protected $table = 'translatedsentence';
+    protected $table = 'words';
 	
 	public static function getWordID($word, $lang){
 		$all = Words::all();
