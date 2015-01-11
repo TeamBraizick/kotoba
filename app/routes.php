@@ -11,12 +11,17 @@
 |
 */
 
+//Main
 Route::get('/', 'Home@main');
-Route::get('/add/', 'Home@add');
-Route::get('/search/', 'Home@search');
-Route::post('/insert/', 'Home@insert');
-Route::post('/find/', 'Home@find');
-Route::post('/search/results', 'Search@results');
+
+//Adding
+Route::get('/add/', 'Add@add');
+Route::post('/insert/', 'Add@insert');
+
+//Searching
+Route::get('/search/', 'Search@search');
+Route::post('/find/', 'Search@find');
+Route::post('/results/', 'Search@results');
 
 //Data Dump
 /*

@@ -8,16 +8,15 @@
 
 	<ul>
 		<li><a href="add">Add</a></li>
-		<li><a href="search">Search</a></li>
+		<!-- <li><a href="search">Search</a></li> -->
 	</ul>
 
-	<?php
-		/*
-			Change TargetLanugage/KnownLanguage
-			to another phrase that makes more sense.
-		*/
-	?>
-	<form method="post" action="search/results">
+	<!--
+		Change TargetLanugage/KnownLanguage
+		to another phrase that makes more sense.
+	-->
+
+	<form method="post" action="find">
 		
 		<select name='target'>
 			<option value="none">Target Language</option>
