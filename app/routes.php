@@ -16,13 +16,14 @@ Route::get('/add/', 'Home@add');
 Route::get('/search/', 'Home@search');
 Route::post('/insert/', 'Home@insert');
 Route::post('/find/', 'Home@find');
+Route::post('/search/results', 'Search@results');
 
 
 
 /*
-Route::get('/', function()
+Route::get('/add/', function()
 {
-    return View::make('hello');
+    return View::make('addB');
 });
 */
 /*

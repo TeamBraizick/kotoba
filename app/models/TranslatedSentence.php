@@ -6,5 +6,5 @@
  */
 
 class TranslatedSentence extends Sentences{
-    protected $table = 'translated_sentence';
+    protected $table = 'translatedsentence';
 }

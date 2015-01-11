@@ -6,5 +6,5 @@
  */
 
 class OriginalSentence extends Sentences{
-    protected $table = 'original_sentence';
+    protected $table = 'originalsentence';
 }

@@ -12,7 +12,6 @@ class Home extends BaseController {
 	| get you started. To route to this controller, just add the route:
 	|
 	|	Route::get('/', 'HomeController@showWelcome');
-	|
 	*/
 
 	/**
@@ -20,7 +19,7 @@ class Home extends BaseController {
      */
 	public function main()
 	{
-		return View::make('main');
+		return View::make('main', ['languages' => Languages::getLangs()]);
 	}
 
 	/**
@@ -46,24 +45,76 @@ class Home extends BaseController {
 		} else {
 			//Create an entry for the original sentence
 			$original = new OriginalSentence();
-			$original->language = $_POST['lang'];
+			$original->lang = $_POST['target_lang'];
 			$original->sentence = $_POST['sentence'];
-			$original->words = serialize(Sentences::getWords($_POST['sentence']));
+			$original->words = serialize([]);
+			$orgWords = Sentences::getWords($_POST['sentence']);
 			//Write entry to DB
 			$original->save();
-			//Get entry's id to link with translation
+			//Get entry's id for further use
 			$original_id = $original->id;
 
 			//Create an entry for thet translated sentence
 			$translated = new TranslatedSentence();
 			//Quick and dirty. Change to scale. CBT
-			$translated->language = ($_POST['lang'] == 'en') ? 'jp' : 'en';
+			$translated->lang = $_POST['source_lang'];
 			$translated->sentence = $_POST['translation'];
-			$translated->words = serialize(Sentences::getWords($_POST['translation']));
+			$translated->words = serialize([]);
 			$translated->original = serialize($original_id);
+			$trWords = Sentences::getWords($_POST['translation']);
+			//Write entry to DB
 			$translated->save();
+			//Get entry's id for further use
 			$translated_id = $translated->id;
 
+			//Add original sentence to the words
+			foreach($orgWords as $spec){
+				$wordID = Words::getWordID($spec, $_POST['target_lang']);
+				if($wordID == -1){
+					$newWord = new Words();
+					$newWord->word = $spec;
+					$newWord->lang=$_POST['target_lang'];
+					$newWord->originals = serialize([]);
+					$newWord->translated = serialize([]);
+					$newWord->save();
+					$wordID = $newWord->id;
+				}
+				$word = Words::find($wordID);
+				$originalsArr = unserialize($word->originals);
+				array_push($originalArr, $original_id);
+				$word->originals = serialize($originalsArr);
+				$word->save();
+				
+				$wordArr = unserialize($original->words);
+				array_push($wordArr, $wordID);
+				$original->words = serialize($wordArr);
+				$original->save();
+			}
+			
+			//Add translated sentence to the words
+			foreach($trWords as $spec){
+				$wordID = Words::getWordID($spec, $_POST['source_lang']);
+				if($wordID == -1){
+					$newWord = new Words();
+					$newWord->word = $spec;
+					$newWord->lang=$_POST['source_lang'];
+					$newWord->originals = serialize([]);
+					$newWord->translated = serialize([]);
+					$newWord->save();
+					$wordID = $newWord->id;
+				}
+				$word = Words::find($wordID);
+				$translatedArr = unserialize($word->translated);
+				array_push($originalArr, $translated_id);
+				$word->translated = serialize($translatedArr);
+				$word->save();
+	
+				$wordArr = unserialize($translated->words);
+				array_push($wordArr, $wordID);
+				$translated->words = serialize($wordArr);
+				$translated->save();
+			}
+		
 			//Update the original entry to include the id of the translation
 			$original->translated = serialize($translated_id);
 			$original->save();
