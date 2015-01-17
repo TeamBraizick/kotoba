@@ -1,22 +1,18 @@
 <html>
 
-<header>
-    <title>Main Page</title>
-</header>
+<head>
+	<link rel="stylesheet" href="assets/css/main.css">
+    <title>Kotoba</title>
+</head>
 
 <body>
-
-	<ul>
-		<li><a href="add">Add</a></li>
-		<!-- <li><a href="search">Search</a></li> -->
-	</ul>
-
+<div id="main">
+	<?php require_once('/assets/htmls/header.html')?>
 	<!--
 		Change TargetLanugage/KnownLanguage
 		to another phrase that makes more sense.
 	-->
-
-	<form method="post" action="find">
+	<form id="searcher" method="post" action="find">
 		
 		<select name='target'>
 			<option value="none">Target Language</option>
@@ -29,7 +25,7 @@
 				);
 			} ?>
 		</select>
-		
+		<span>&nbsp;&nbsp; ---> &nbsp;&nbsp;</span>
 		<select name='known'>
 			<option value="none">Known Language</option>
 			<option value="none">---------------</option>
@@ -42,10 +38,11 @@
 			} ?>
 		</select>
 		
-		<input type="text" name="query">
+		<br/>
+		<input id="box" type="text" name="query">
 		<input type="submit" value="Search">
 	</form>
-
+</div>
 </body>
 
 </html>
