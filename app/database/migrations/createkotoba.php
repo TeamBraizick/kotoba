@@ -10,7 +10,7 @@ class CreateKotobaTables extends Migration {
 			createSentences($original);
 			createSentences($translated);
 			createWords();
-		}
+			}
 		
 		public function down(){
 			dropSentence($original);

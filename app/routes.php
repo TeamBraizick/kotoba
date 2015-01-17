@@ -19,7 +19,7 @@ Route::get('/add/', 'Add@add');
 Route::post('/insert/', 'Add@insert');
 
 //Searching
-Route::get('/search/', 'Search@search');
+Route::get('/search/', 'Home@main');
 Route::post('/find/', 'Search@find');
 Route::post('/results/', 'Search@results');
 

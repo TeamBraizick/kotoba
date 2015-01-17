@@ -26,7 +26,7 @@ return array(
 	|
 	*/
 
-	'url' => 'http://miku.dev/kotoba',
+	'url' => 'localhost/kotoba',
 
 	/*
 	|--------------------------------------------------------------------------
@@ -150,7 +150,7 @@ return array(
 	*/
 
 	'aliases' => array(
-
+		
 		'App'               => 'Illuminate\Support\Facades\App',
 		'Artisan'           => 'Illuminate\Support\Facades\Artisan',
 		'Auth'              => 'Illuminate\Support\Facades\Auth',

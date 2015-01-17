@@ -15,28 +15,31 @@ body {
 	margin-bottom: 0%;
 }
 
-#top_menu{
-	list-style: none;
+#menu{
+	//list-style: none;
 	//padding: 0%;
-	display: inline;
-	//padding: 2px 5px 2px 5px;
+	//display: inline;
+	font-size: small;
+	padding: 2px 5px 2px 5px;
 }
 
-#top_menu a {
-	display: block;
-    padding: 2px 5px 2px 5px;
-    float: left;
-    margin: 0 5px 0 0;
+#menu a {
+	//display: block;
+    //padding: 2px 5px 2px 5px;
+    //float: left;
+    margin: 0 5px 0 5px;
 }
 
 
 #searcher{
+	margin-top: 2em;
 	margin-left: 5%;
 }
 
 #box{
 	margin-top: .2em;
 	width: 75%;
+	margin-bottom: 1em;
 }
 
 .inv{

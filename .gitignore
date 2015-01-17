@@ -101,3 +101,4 @@ Thumbs.db
 #	End:		      #
 # Octocat's common .gitignore #
 ###############################
+/nbproject/private/
