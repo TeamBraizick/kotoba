@@ -2,6 +2,7 @@
 
 	<head>
 		<link rel="stylesheet" href="assets/css/main.css">
+		<script src="assets/js/tag_extractor.js"></script>
 		<title>Add</title>
 	</head>
 

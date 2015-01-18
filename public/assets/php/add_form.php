@@ -13,10 +13,10 @@
 	</select>
 	<br/>
 	What is the sentence? <br/>
-	<textarea name="sentence" maxlength="5000"></textarea>
+	<textarea name="sentence" maxlength="5000" id='org_sentence'></textarea>
 	<br/>
 	What words are in this sentence? <br/>
-	<input type='text' class='tag_box' id='org_tags' name='org_tags'>
+	<input type='text' class='tag_box' id='org_tags' name='org_tags' onclick="display(org_sentence, org_tags)">
 
 	<br/><br/><br/>
 	What language is the translation in? <br/>
@@ -33,10 +33,10 @@
 	</select>
 	<br/>
 	What is the translation? <br/>
-	<textarea name="translation" maxlength="5000"></textarea>
+	<textarea name="translation" maxlength="5000" id='trs_sentence'></textarea>
 	<br/>
 	What words are in this sentence? <br/>
-	<input type='text' class='tag_box' id='trs_tags' name='trs_tags'>
+	<input type='text' class='tag_box' id='trs_tags' name='trs_tags' onclick="display(trs_sentence, trs_tags)">
 
 	<br/><br/><br/>
 	<input type="submit" value="ADD!">
