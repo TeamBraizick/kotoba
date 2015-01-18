@@ -1,27 +1,27 @@
 <?php
 
 /*
-|--------------------------------------------------------------------------
-| Application Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register all of the routes for an application.
-| It's a breeze. Simply tell Laravel the URIs it should respond to
-| and give it the Closure to execute when that URI is requested.
-|
-*/
+  |--------------------------------------------------------------------------
+  | Application Routes
+  |--------------------------------------------------------------------------
+  |
+  | Here is where you can register all of the routes for an application.
+  | It's a breeze. Simply tell Laravel the URIs it should respond to
+  | and give it the Closure to execute when that URI is requested.
+  |
+ */
 
 //Main
-Route::get('/', 'Home@main');
+Route::get('/', 'HomeController@main');
 
 //Adding
-Route::get('/add/', 'Add@add');
-Route::post('/insert/', 'Add@insert');
+Route::get('/add/', 'AddController@add');
+Route::post('/insert/', 'AddController@insert');
 
 //Searching
-Route::get('/search/', 'Home@main');
-Route::post('/find/', 'Search@find');
-Route::post('/results/', 'Search@results');
+Route::get('/search/', 'HomeController@main');
+Route::post('/find/', 'SearchController@lookup');
+Route::post('/results/', 'SearchController@results');
 
 //Data Dump
 /*

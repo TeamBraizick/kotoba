@@ -1,12 +1,11 @@
 <?php
 
-class Home extends BaseController {
-	
+class HomeController extends BaseController {
+
 	/**
 	 * @return mixed
-     */
-	public function main()
-	{
+	 */
+	public function main() {
 		return View::make('main', ['languages' => Languages::getLangs()]);
 	}
 

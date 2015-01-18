@@ -1,12 +1,12 @@
 <?php
 
 /**
-Contains an array ($langs) that are in kotoba.
-Keys are in ISO 639-2 codes.
-If there is a 'B' and 'T' code, then the 'B' code is used.
-Values are that Language's name in that language.
-*/
-final class Languages{
+  Contains an array ($langs) that are in kotoba.
+  Keys are in ISO 639-2 codes.
+  If there is a 'B' and 'T' code, then the 'B' code is used.
+  Values are that Language's name in that language.
+ */
+final class Languages {
 
 	public static final function getLangs() {
 		return array(
@@ -22,4 +22,5 @@ final class Languages{
 			"chi" => "Hanyu" //Chinese; 汉语
 		);
 	}
+
 }
